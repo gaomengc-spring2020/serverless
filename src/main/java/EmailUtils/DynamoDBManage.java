@@ -69,7 +69,6 @@ public class DynamoDBManage {
         this.username = username;
         try {
             Item item = table.getItem(PR_KEY, username);
-
             if(item == null){
                 createToken();
                 return true;
