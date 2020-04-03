@@ -65,6 +65,12 @@ public class DynamoDBManage {
 
     //return true if over 60 minutes
     public boolean checkToken(String username){
+
+        context.getLogger().log("Start checking token.");
+        context.getLogger().log("Talbe Name " + TABLE_NAME);
+
+        context.getLogger().log("PR_KEY Name " + PR_KEY);
+
         Table table = new DynamoDB(dynamoDBClient).getTable(TABLE_NAME);
         this.username = username;
         try {

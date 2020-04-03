@@ -21,6 +21,10 @@ public class EmailNotification implements RequestHandler<SNSEvent, Object>{
         String user = attributeMap.get("User").getValue();
         String due_in = attributeMap.get("Due_in").getValue();
 
+        context.getLogger().log(">>>>>>>>  user : " + user);
+        context.getLogger().log(">>>>>>>>  due_in : " + due_in);
+
+
         if(new DynamoDBManage(context).checkToken(user)){
             String msg = sns.getMessage();
             context.getLogger().log(">>>>>>>>  body message : " + msg);
