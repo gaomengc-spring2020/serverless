@@ -72,7 +72,7 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-          
+
       - run:
           name: install tools
           command: |
@@ -111,9 +111,10 @@ jobs:
       - run:
           name: CodeDeploy API call
           command: |
-            aws lambda update-function-code \
-                --function-name  test \
-                --zip-file https://s3.amazonaws.com/${S3_CODEDEPLOY_BUCKET}/csye6225-lambda-${CIRCLE_BUILD_NUM}.zip
+            aws lambda add-permission --function-name ${LAMBDA_FUNCTION_NAME} --principal s3.amazonaws.com \
+              --statement-id s3invoke --action "lambda:InvokeFunction" \
+              --source-arn arn:aws:s3:::${S3_CODEDEPLOY_BUCKET} \
+              --source-account ${AWS_ACCOUNT}
 
 
 workflows:
