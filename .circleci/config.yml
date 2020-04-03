@@ -112,9 +112,7 @@ jobs:
           command: |
             aws lambda update-function-code \
                 --function-name  LambdaFunctionA10 \
-                --zip-file fileb://lambda_artifact/csye6225-lambda-${CIRCLE_BUILD_NUM}.jar \
-                --handler EmailNotification::handleRequest \
-                --runtime Java8
+                --zip-file fileb://lambda_artifact/csye6225-lambda-${CIRCLE_BUILD_NUM}.jar 
 
 workflows:
   version: 2
