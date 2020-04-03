@@ -93,10 +93,7 @@ jobs:
           command: |
             mkdir lambda_artifact
             mv csye6225-lambda-${CIRCLE_BUILD_NUM}.jar lambda_artifact/
-            zip -r csye6225-lambda-${CIRCLE_BUILD_NUM}.zip csye6225-lambda-${CIRCLE_BUILD_NUM}.jar codedeploy/*.sh appspec.yml cloudwatch-config.json
             pwd
-            ls -al
-            mv csye6225-lambda-${CIRCLE_BUILD_NUM}.zip lambda_artifact/
             ls -al
             pwd
             cd lambda_artifact
