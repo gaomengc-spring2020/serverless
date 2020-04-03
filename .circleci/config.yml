@@ -114,7 +114,7 @@ jobs:
             aws lambda add-permission --function-name ${LAMBDA_FUNCTION_NAME} --principal s3.amazonaws.com \
               --statement-id s3invoke --action "lambda:InvokeFunction" \
               --source-arn arn:aws:s3:::${S3_CODEDEPLOY_BUCKET} \
-              --source-account ${AWS_ACCOUNT}
+              --source-account ${AWS_ACCOUNT} --region us-east-1
 
 
 workflows:
