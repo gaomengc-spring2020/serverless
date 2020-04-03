@@ -111,10 +111,10 @@ jobs:
       - run:
           name: CodeDeploy API call
           command: |
-            aws lambda update-function-code \
+            aws lambda update-function-code --region us-east-1 \
                 --function-name  test \
                 --zip-file fileb://lambda_artifact/csye6225-lambda-${CIRCLE_BUILD_NUM}.zip
-                --region us-east-1
+
 
 
 workflows:
