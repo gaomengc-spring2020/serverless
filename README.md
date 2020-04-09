@@ -20,16 +20,25 @@
    openssl req -new -key private-key.pem -out csr.pem
    
    3. get Certificate on Namecheap
-   
-   4. set IAM for certificate
+   4. import to ACM
+
+   aws acm import-certificate --certificate file://Ce***te.pem
+                             --certificate-chain file://Cer***Chain.pem
+                             --private-key file://Pr***Key.pem
+                             --profile p***
+
+
+   -------------------------------
+   other: 
+   1. set IAM for certificate
    aws iam upload-server-certificate \
-       --server-certificate-name ch***ame \
-       --certificate-body file://pr***e.pem \
-       --private-key file://private-key.pem \
-       --profile p***
-   
-   5. check 
+      --server-certificate-name ch***ame \
+      --certificate-body file://pr***e.pem \
+      --private-key file://private-key.pem \
+      --profile p***
+
+   2. check 
    aws iam get-server-certificate \
-     --server-certificate-name ch***me \
-     --profile p***
+    --server-certificate-name ch***me \
+    --profile p***
     ```
