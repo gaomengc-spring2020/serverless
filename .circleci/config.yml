@@ -113,7 +113,7 @@ jobs:
           command: |
             aws lambda update-function-configuration \
                 --function-name  LambdaFunctionA11 \
-                --runtime java8
+                --runtime java8 \
                 --memory-size 512
       - run:
           name: Update Lambda Function Code
