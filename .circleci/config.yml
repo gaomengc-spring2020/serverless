@@ -108,12 +108,13 @@ jobs:
             aws s3 sync ./lambda_artifact s3://${S3_CODEDEPLOY_BUCKET}
             aws configure set region us-east-1
 
-      -run:
+      - run:
           name: Update Lambda Function Runtime
           command: |
             aws lambda update-function-configuration \
                 --function-name  LambdaFunctionA10 \
                 --runtime java8
+                --memory-size 512
       - run:
           name: Update Lambda Function Code
           command: |
