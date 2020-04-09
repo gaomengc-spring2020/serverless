@@ -107,13 +107,19 @@ jobs:
           command: |
             aws s3 sync ./lambda_artifact s3://${S3_CODEDEPLOY_BUCKET}
             aws configure set region us-east-1
+
+      -run:
+          name: Update Lambda Function Runtime
+          command: |
+            aws lambda update-function-configuration \
+                --function-name  LambdaFunctionA10 \
+                --runtime java8
       - run:
-          name: CodeDeploy API call
+          name: Update Lambda Function Code
           command: |
             aws lambda update-function-code \
                 --function-name  LambdaFunctionA10 \
-                --runtime java8 \
-                --zip-file fileb://lambda_artifact/csye6225-lambda-${CIRCLE_BUILD_NUM}.jar 
+                --zip-file fileb://lambda_artifact/csye6225-lambda-${CIRCLE_BUILD_NUM}.jar
 
 workflows:
   version: 2
