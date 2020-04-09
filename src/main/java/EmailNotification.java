@@ -14,7 +14,13 @@ public class EmailNotification implements RequestHandler<SNSEvent, Object>{
     public Object handleRequest(SNSEvent request, Context context) {
 
         SNSEvent.SNS sns = request.getRecords().get(0).getSNS();
-        context.getLogger().log(">>>>>>>>  got sns; ");
+
+        context.getLogger().log(">>>>>>>>  got sns; " + sns.getTopicArn());
+
+        context.getLogger().log(">>>>>>>>  got sns; " + sns.getMessage());
+
+        context.getLogger().log(">>>>>>>>  got sns; " + sns.getMessageAttributes());
+
 
         Map<String, SNSEvent.MessageAttribute> attributeMap = sns.getMessageAttributes();
         context.getLogger().log(">>>>>>>>  attributeMap : " + attributeMap.toString());
